@@ -1,375 +1,454 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-    <title>PDF Reading Pacer</title>
-  </head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+			integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+			integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+			crossorigin="anonymous"
+		/>
+		<title>PDF Reading Pacer</title>
+	</head>
 
-  <body>
-    <div id="main-toolbar"></div>
+	<body>
+		<div id="main-toolbar"></div>
 
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark mb-3 sticky-top">
-      <div class="container">
-        <a class="navbar-brand text-warning mr-auto" href="#"
-          ><i class="fas fa-book"></i> PDF Reading Pacer</a
-        >
-        <button
-          class="navbar-toggler"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav" id="navbarNav">
-            <li class="nav-item btn btn-outline-warning mx-1" id="original-pdf">
-              <span class="nav-link">Original PDF</span>
-            </li>
-            <li class="nav-item btn btn-outline-warning mx-1" id="pacer-mode">
-              <span class="nav-link">Pacer Mode</span>
-            </li>
-            <li class="nav-item btn btn-outline-warning mx-1" id="stop">
-              <span class="nav-link">Stop</span>
-            </li>
-            <li class="nav-item btn btn-outline-warning mx-1" id="play">
-              <span class="nav-link">Play</span>
-            </li>
-            <li class="nav-item btn btn-outline-warning mx-1" id="pdf-prev">
-              <span class="nav-link">
-                <i class="fas fa-arrow-left"></i> Previous Page</span
-              >
-            </li>
-            <li class="nav-item btn btn-outline-warning mx-1" id="pdf-next">
-              <span class="nav-link"
-                >Next Page <i class="fas fa-arrow-right"></i
-              ></span>
-            </li>
+		<nav
+			class="navbar navbar-expand-sm navbar-dark bg-dark mb-3 sticky-top"
+		>
+			<div class="container">
+				<a
+					class="navbar-brand text-warning mr-auto"
+					href="#"
+					><i class="fas fa-book"></i> PDF Reading Pacer</a
+				>
+				<button
+					class="navbar-toggler"
+					data-toggle="collapse"
+					data-target="#navbarNav"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div
+					class="collapse navbar-collapse justify-content-end"
+					id="navbarNav"
+				>
+					<ul class="navbar-nav" id="navbarNav">
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="original-pdf"
+						>
+							<span class="nav-link">Original PDF</span>
+						</li>
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="pacer-mode"
+						>
+							<span class="nav-link">Pacer Mode</span>
+						</li>
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="stop"
+						>
+							<span class="nav-link">Stop</span>
+						</li>
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="play"
+						>
+							<span class="nav-link">Play</span>
+						</li>
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="pdf-prev"
+						>
+							<span class="nav-link">
+								<i class="fas fa-arrow-left"></i> Previous
+								Page</span
+							>
+						</li>
+						<li
+							class="nav-item btn btn-outline-warning mx-1"
+							id="pdf-next"
+						>
+							<span class="nav-link"
+								>Next Page <i class="fas fa-arrow-right"></i
+							></span>
+						</li>
 
-            <li class="nav-item mx-1" id="pdf-next">
-              <span
-                class="nav-link"
-                id="page-count-container"
-                style="display: none"
-                >Page <span id="pdf-current-page"></span> of
-                <span id="pdf-total-pages"></span
-              ></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+						<li class="nav-item mx-1" id="pdf-next">
+							<span
+								class="nav-link"
+								id="page-count-container"
+								style="display: none"
+								>Page <span id="pdf-current-page"></span> of
+								<span id="pdf-total-pages"></span
+							></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-    <div class="row mt-2 mx-2">
-      <div class="col-md-3">
-        <!-- ENTER LINK-->
-        <div class="input-group mt-3 mb-5">
-          <input
-            id="get-pdf-link-entry"
-            type="text"
-            class="form-control"
-            placeholder="Enter link to PDF..."
-          />
-          <div class="input-group-append">
-            <button id="show-pdf-button" class="btn btn-warning" type="button">
-              Show PDF
-            </button>
-          </div>
-        </div>
+		<div class="row mt-2 mx-2">
+			<div class="col-md-3 card">
+				<!-- ENTER LINK-->
+				<div class="input-group mt-3 mb-5">
+					<input
+						id="get-pdf-link-entry"
+						type="text"
+						class="form-control"
+						placeholder="Enter link to PDF..."
+					/>
+					<div class="input-group-append">
+						<button
+							id="show-pdf-button"
+							class="btn btn-warning"
+							type="button"
+						>
+							Show PDF
+						</button>
+					</div>
+				</div>
 
-        <!-- RANGE -->
-        <div class="form-group mb-5 slidecontainer">
-          <p>Reading Speed (WPM): <span id="demo">350</span></p>
-          <input
-            type="range"
-            min="200"
-            max="500"
-            value="350"
-            step="10"
-            class="slider custom-range"
-            id="myRange"
-          />
-        </div>
+				<!-- RANGE -->
+				<div class="form-group mb-5 slidecontainer">
+					<p>
+						Reading Speed (WPM): <span id="demo">350</span>
+					</p>
+					<input
+						type="range"
+						min="200"
+						max="500"
+						value="350"
+						step="10"
+						class="slider custom-range"
+						id="myRange"
+					/>
+				</div>
 
-        <!-- INLINE FORM FOR PAGE RANGE -->
-        <form class="form-inline mb-2">
-          <input
-            id="start-page"
-            type="number"
-            class="form-control mr-2"
-            placeholder="Start Page..."
-          />
-          <input
-            id="end-page"
-            type="number"
-            class="form-control mr-2"
-            placeholder="End Page..."
-          />
-          <div class="form-check">
-            <label class="form-check-label mr-2">
-              <input
-                id="end-page-checkbox"
-                type="checkbox"
-                class="form-check-input"
-              />
-              No end page
-            </label>
-          </div>
-        </form>
-        <button id="save-start-end" class="btn btn-warning mb-5">
-          Save
-        </button>
+				<!-- INLINE FORM FOR PAGE RANGE -->
+				<form class="form-inline mb-2">
+					<input
+						id="start-page"
+						type="number"
+						class="form-control mr-2"
+						placeholder="Start Page..."
+					/>
+					<input
+						id="end-page"
+						type="number"
+						class="form-control mr-2"
+						placeholder="End Page..."
+					/>
+					<div class="form-check">
+						<label class="form-check-label mr-2">
+							<input
+								id="end-page-checkbox"
+								type="checkbox"
+								class="form-check-input"
+							/>
+							No end page
+						</label>
+					</div>
+				</form>
+				<button
+					id="save-start-end"
+					class="btn btn-warning mb-5"
+				>
+					Save
+				</button>
 
-        <!-- HIGHLIGHT COLOR SELECTION -->
-        <div id="color-selectors" class="mb-5">
-          <span>Highlight Color: </span>
-          <button class="btn btn-dark ml-3" id="cyan-color" style="color: cyan">
-            Cyan
-          </button>
-          <button class="btn btn-dark" id="yellow-color" style="color: yellow">
-            Yellow
-          </button>
-        </div>
+				<!-- HIGHLIGHT COLOR SELECTION -->
+				<div id="color-selectors" class="mb-5">
+					<span>Highlight Color: </span>
+					<button
+						class="btn btn-dark ml-3"
+						id="cyan-color"
+						style="color: cyan"
+					>
+						Cyan
+					</button>
+					<button
+						class="btn btn-dark"
+						id="yellow-color"
+						style="color: yellow"
+					>
+						Yellow
+					</button>
+				</div>
 
-        <!-- START PACING BUTTON -->
-        <button class="btn btn-block btn-warning mb-5" id="start-pacing">
-          Start Pacing
-        </button>
+				<!-- START PACING BUTTON -->
+				<button
+					class="btn btn-block btn-warning mb-5"
+					id="start-pacing"
+				>
+					Start Pacing
+				</button>
 
-        <!-- PAGINATION -->
-        <form class="form-inline mb-5">
-          <span>Go to page: </span>
-          <input
-            id="enter-page"
-            type="number"
-            class="form-control mx-2"
-            placeholder="Enter Page..."
-          />
-          <span id="total-pages">/1</span>
-          <button
-            id="save-start-end"
-            class="btn btn-warning ml-2"
-            type="submit"
-          >
-            Enter
-          </button>
-        </form>
-      </div>
+				<!-- PAGINATION -->
+				<form class="form-inline mb-5">
+					<span>Go to page: </span>
+					<input
+						id="enter-page"
+						type="number"
+						class="form-control mx-2"
+						placeholder="Enter Page..."
+					/>
+					<span id="total-pages">/1</span>
+					<button
+						id="save-start-end"
+						class="btn btn-warning ml-2"
+						type="submit"
+					>
+						Enter
+					</button>
+				</form>
+			</div>
 
-      <div class="col-md-6" id="main-page-display">
-        <div id="pdf-main-container">
-          <div id="pdf-loader">
-            <h1 style="text-align: center">Sample Text</h1>
-            <br />
-            <br />
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-              officiis facere aliquam, ex amet quos culpa at exercitationem
-              earum, similique dignissimos, consequuntur eum numquam quidem
-              consectetur eius voluptates et provident!
-            </p>
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum
-              voluptatum accusantium atque quibusdam delectus error nisi numquam
-              ducimus reiciendis porro, ipsa iusto eos tempora. Tempora, fugit
-              sit. Aperiam, quibusdam molestiae?
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-              reiciendis maxime accusantium quis unde consequatur atque eligendi
-              nesciunt non, hic, quibusdam, nobis eum a dolor sequi consectetur
-              voluptates amet est. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Ab debitis expedita neque dignissimos sint
-              ducimus! Dolorum esse inventore quasi eius corporis harum non qui,
-              fugit eaque, ut dicta facere facilis natus soluta quas sequi
-              reiciendis accusamus blanditiis amet temporibus explicabo
-              voluptatibus, ipsum laborum earum. Rerum sed quod minus, nesciunt
-              labore corporis molestias? Nostrum vel delectus incidunt nihil hic
-              voluptatem similique ut perspiciatis? Soluta qui velit alias unde
-              vitae, ex voluptatem repellat vel praesentium architecto numquam!
-              Temporibus alias dicta repellendus. Ducimus repudiandae unde
-              similique dolorem, odio voluptas id corrupti ipsum! Ab nam iure,
-              illum omnis explicabo quidem cumque repudiandae obcaecati odit!
-              Vero esse temporibus accusantium ex dignissimos quod nihil,
-              impedit quasi explicabo fuga voluptatibus! Asperiores cum facere
-              consequatur amet assumenda adipisci pariatur ab nostrum nemo
-              reprehenderit maiores rem, beatae id voluptates. Accusantium sit
-              incidunt ipsum ratione eaque! Autem maiores, at architecto aliquam
-              sequi sint laudantium, unde fugiat, iste corrupti dolore
-              reprehenderit.
-            </p>
+			<div class="col-md-6" id="main-page-display">
+				<div id="pdf-main-container">
+					<div id="pdf-loader">
+						<h1 style="text-align: center">Sample Text</h1>
+						<br />
+						<br />
+						<p>
+							Lorem ipsum dolor sit amet consectetur
+							adipisicing elit. Delectus officiis facere
+							aliquam, ex amet quos culpa at exercitationem
+							earum, similique dignissimos, consequuntur eum
+							numquam quidem consectetur eius voluptates et
+							provident!
+						</p>
+						<p>
+							Lorem ipsum, dolor sit amet consectetur
+							adipisicing elit. Harum voluptatum accusantium
+							atque quibusdam delectus error nisi numquam
+							ducimus reiciendis porro, ipsa iusto eos
+							tempora. Tempora, fugit sit. Aperiam,
+							quibusdam molestiae?
+						</p>
+						<p>
+							Lorem ipsum dolor, sit amet consectetur
+							adipisicing elit. Sint reiciendis maxime
+							accusantium quis unde consequatur atque
+							eligendi nesciunt non, hic, quibusdam, nobis
+							eum a dolor sequi consectetur voluptates amet
+							est. Lorem, ipsum dolor sit amet consectetur
+							adipisicing elit. Ab debitis expedita neque
+							dignissimos sint ducimus! Dolorum esse
+							inventore quasi eius corporis harum non qui,
+							fugit eaque, ut dicta facere facilis natus
+							soluta quas sequi reiciendis accusamus
+							blanditiis amet temporibus explicabo
+							voluptatibus, ipsum laborum earum. Rerum sed
+							quod minus, nesciunt labore corporis
+							molestias? Nostrum vel delectus incidunt nihil
+							hic voluptatem similique ut perspiciatis?
+							Soluta qui velit alias unde vitae, ex
+							voluptatem repellat vel praesentium architecto
+							numquam! Temporibus alias dicta repellendus.
+							Ducimus repudiandae unde similique dolorem,
+							odio voluptas id corrupti ipsum! Ab nam iure,
+							illum omnis explicabo quidem cumque
+							repudiandae obcaecati odit! Vero esse
+							temporibus accusantium ex dignissimos quod
+							nihil, impedit quasi explicabo fuga
+							voluptatibus! Asperiores cum facere
+							consequatur amet assumenda adipisci pariatur
+							ab nostrum nemo reprehenderit maiores rem,
+							beatae id voluptates. Accusantium sit incidunt
+							ipsum ratione eaque! Autem maiores, at
+							architecto aliquam sequi sint laudantium, unde
+							fugiat, iste corrupti dolore reprehenderit.
+						</p>
 
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-              reiciendis maxime accusantium quis unde consequatur atque eligendi
-              nesciunt non, hic, quibusdam, nobis eum a dolor sequi consectetur
-              voluptates amet est. Lorem, ipsum dolor sit amet consectetur
-              adipisicing elit. Ab debitis expedita neque dignissimos sint
-              ducimus! Dolorum esse inventore quasi eius corporis harum non qui,
-              fugit eaque, ut dicta facere facilis natus soluta quas sequi
-              reiciendis accusamus blanditiis amet temporibus explicabo
-              voluptatibus, ipsum laborum earum. Rerum sed quod minus, nesciunt
-              labore corporis molestias? Nostrum vel delectus incidunt nihil hic
-              voluptatem similique ut perspiciatis? Soluta qui velit alias unde
-              vitae, ex voluptatem repellat vel praesentium architecto numquam!
-              Temporibus alias dicta repellendus. Ducimus repudiandae unde
-              similique dolorem, odio voluptas id corrupti ipsum! Ab nam iure,
-              illum omnis explicabo quidem cumque repudiandae obcaecati odit!
-              Vero esse temporibus accusantium ex dignissimos quod nihil,
-              impedit quasi explicabo fuga voluptatibus! Asperiores cum facere
-              consequatur amet assumenda adipisci pariatur ab nostrum nemo
-              reprehenderit maiores rem, beatae id voluptates. Accusantium sit
-              incidunt ipsum ratione eaque! Autem maiores, at architecto aliquam
-              sequi sint laudantium, unde fugiat, iste corrupti dolore
-              reprehenderit.
-            </p>
-          </div>
+						<p>
+							Lorem ipsum dolor, sit amet consectetur
+							adipisicing elit. Sint reiciendis maxime
+							accusantium quis unde consequatur atque
+							eligendi nesciunt non, hic, quibusdam, nobis
+							eum a dolor sequi consectetur voluptates amet
+							est. Lorem, ipsum dolor sit amet consectetur
+							adipisicing elit. Ab debitis expedita neque
+							dignissimos sint ducimus! Dolorum esse
+							inventore quasi eius corporis harum non qui,
+							fugit eaque, ut dicta facere facilis natus
+							soluta quas sequi reiciendis accusamus
+							blanditiis amet temporibus explicabo
+							voluptatibus, ipsum laborum earum. Rerum sed
+							quod minus, nesciunt labore corporis
+							molestias? Nostrum vel delectus incidunt nihil
+							hic voluptatem similique ut perspiciatis?
+							Soluta qui velit alias unde vitae, ex
+							voluptatem repellat vel praesentium architecto
+							numquam! Temporibus alias dicta repellendus.
+							Ducimus repudiandae unde similique dolorem,
+							odio voluptas id corrupti ipsum! Ab nam iure,
+							illum omnis explicabo quidem cumque
+							repudiandae obcaecati odit! Vero esse
+							temporibus accusantium ex dignissimos quod
+							nihil, impedit quasi explicabo fuga
+							voluptatibus! Asperiores cum facere
+							consequatur amet assumenda adipisci pariatur
+							ab nostrum nemo reprehenderit maiores rem,
+							beatae id voluptates. Accusantium sit incidunt
+							ipsum ratione eaque! Autem maiores, at
+							architecto aliquam sequi sint laudantium, unde
+							fugiat, iste corrupti dolore reprehenderit.
+						</p>
+					</div>
 
-          <div id="pdf-contents">
-            <canvas
-              class="text-center mt-4"
-              id="pdf-canvas"
-              width="800px"
-            ></canvas>
+					<div id="pdf-contents">
+						<canvas
+							class="text-center mt-4"
+							id="pdf-canvas"
+							width="800px"
+						></canvas>
 
-            <div class="my-4" id="text-layer"></div>
-          </div>
-        </div>
-      </div>
+						<div class="my-4" id="text-layer"></div>
+					</div>
+				</div>
+			</div>
 
-      <div class="col-md-3">
-        <!-- INFO CARD -->
-        <div class="card mx-auto mt-3 mb-5">
-          <div class="card-body">
-            <h4 class="card-title text-center">
-              How To Start Pacing Your PDF:
-            </h4>
-            <h6 class="card-subtitle text-muted text-center mb-3">
-              Step by Step
-            </h6>
-            <p class="card-text mb-2" id="step-1">
-              1. Enter the link of your desired PDF, then click on the "Show
-              PDF" button. Make sure the PDF that appears is the correct one.
-            </p>
-            <p class="card-text mb-2" id="step-2">
-              2. Click on the "Pacer Mode" button to display the text that will
-              be paced for you soon.
-            </p>
-            <p class="card-text mb-2" id="step-3">
-              3. Select your desired reading speed.
-            </p>
-            <p class="card-text mb-2" id="step-4">
-              4. Set the start and end page for your reading session and click
-              "Save".
-            </p>
-            <p class="card-text mb-2" id="step-5">
-              5. Select your desired highlight color. (Default is yellow).
-            </p>
-            <p class="card-text mb-2" id="step-6">
-              6. Click the "Start Pacing Button" to start your session!
-            </p>
+			<div class="col-md-3">
+				<!-- INFO CARD -->
+				<div class="card mx-auto mt-3 mb-5">
+					<div class="card-body">
+						<h4 class="card-title text-center">
+							How To Start Pacing Your PDF:
+						</h4>
+						<h6
+							class="card-subtitle text-muted text-center mb-3"
+						>
+							Step by Step
+						</h6>
+						<p class="card-text mb-2" id="step-1">
+							1. Enter the link of your desired PDF, then
+							click on the "Show PDF" button. Make sure the
+							PDF that appears is the correct one.
+						</p>
+						<p class="card-text mb-2" id="step-2">
+							2. Click on the "Pacer Mode" button to display
+							the text that will be paced for you soon.
+						</p>
+						<p class="card-text mb-2" id="step-3">
+							3. Select your desired reading speed.
+						</p>
+						<p class="card-text mb-2" id="step-4">
+							4. Set the start and end page for your reading
+							session and click "Save".
+						</p>
+						<p class="card-text mb-2" id="step-5">
+							5. Select your desired highlight color.
+							(Default is yellow).
+						</p>
+						<p class="card-text mb-2" id="step-6">
+							6. Click the "Start Pacing Button" to start
+							your session!
+						</p>
 
-            <a class="btn btn-block btn-outline-primary" href="index.html"
-              >Start Over</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
+						<a
+							class="btn btn-block btn-outline-primary"
+							href="index.html"
+							>Start Over</a
+						>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <script src="script.js"></script>
-    <script src="build/pdf.js"></script>
-    <script src="build/pdf.worker.js"></script>
-    <script
-      src="http://code.jquery.com/jquery-3.3.1.min.js"
-      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-      crossorigin="anonymous"
-    ></script>
-  </body>
-  <footer class="footer">
-    <p id="year">Cat-Tuong Tu &#169; 2020</p>
-  </footer>
+		<script src="script.js"></script>
+		<script src="build/pdf.js"></script>
+		<script src="build/pdf.worker.js"></script>
+		<script
+			src="http://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+			integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+			integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+			crossorigin="anonymous"
+		></script>
+	</body>
+	<footer class="footer">
+		<p id="year">Cat-Tuong Tu &#169; 2020</p>
+	</footer>
 </html>
 
 <style>
-  body {
-    overflow-x: hidden;
-  }
-  #text-layer {
-    position: absolute;
-  }
-  #pdf-canvas {
-    margin: auto;
-  }
-  .custom-range::-webkit-slider-thumb {
-    background: orange;
-  }
+	body {
+		overflow-x: hidden;
+	}
+	#text-layer {
+		position: absolute;
+	}
+	#pdf-canvas {
+		margin: auto;
+	}
+	.custom-range::-webkit-slider-thumb {
+		background: orange;
+	}
 
-  .custom-range::-moz-range-thumb {
-    background: orange;
-  }
+	.custom-range::-moz-range-thumb {
+		background: orange;
+	}
 
-  .custom-range::-ms-thumb {
-    background: orange;
-  }
+	.custom-range::-ms-thumb {
+		background: orange;
+	}
 
-  .pagination > li > a {
-    background-color: white;
-    color: orange;
-  }
+	.pagination > li > a {
+		background-color: white;
+		color: orange;
+	}
 
-  .pagination > li > a:focus,
-  .pagination > li > a:hover,
-  .pagination > li > span:focus,
-  .pagination > li > span:hover {
-    color: #5a5a5a;
-    background-color: #eee;
-    border-color: #ddd;
-  }
+	.pagination > li > a:focus,
+	.pagination > li > a:hover,
+	.pagination > li > span:focus,
+	.pagination > li > span:hover {
+		color: #5a5a5a;
+		background-color: #eee;
+		border-color: #ddd;
+	}
 
-  .pagination > .active > a {
-    color: white;
-    background-color: orange !Important;
-    border: solid 1px orange !Important;
-  }
+	.pagination > .active > a {
+		color: white;
+		background-color: orange !important;
+		border: solid 1px orange !important;
+	}
 
-  .pagination > .active > a:hover {
-    background-color: orange !Important;
-    border: solid 1px orange;
-  }
+	.pagination > .active > a:hover {
+		background-color: orange !important;
+		border: solid 1px orange;
+	}
 
-  .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: black;
-    color: white;
-    text-align: center;
-  }
+	.footer {
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		background-color: black;
+		color: white;
+		text-align: center;
+	}
+	html {
+		background-color: black;
+	}
 </style>
