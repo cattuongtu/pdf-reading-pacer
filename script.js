@@ -1,3 +1,5 @@
+// Cat-Tuong Tu
+
 var _PDF_DOC,
 	_CURRENT_PAGE,
 	_TOTAL_PAGES,
@@ -47,6 +49,10 @@ async function showPDF(pdf_url) {
 
 		// SHOW THE FIRST PAGE
 		showPage(1);
+
+		// PAGE SELECTOR
+		document.querySelector("#total-pages").innerHTML =
+			"/" + _TOTAL_PAGES;
 
 		// ENABLE BUTTON
 		_SAVE_START_END.disabled = false;
@@ -297,12 +303,24 @@ slider.oninput = function () {
 	document.querySelector("#step-3").style.color = "#004df9";
 };
 
+// PAGINATION CONTROL
+let enterPage = document.querySelector("#enter-page");
+let goToPage = document.querySelector("#go-to-page");
+goToPage.disabled = false;
+goToPage.addEventListener("click", () => {
+	while (_CURRENT_PAGE != enterPage.value) {
+		if (_CURRENT_PAGE < enterPage.value) nextPage();
+		else prevPage();
+	}
+});
+
 // PACING CONTROLLER
 
 let delayInMilliseconds;
 
 function pacePage(wpm) {
 	console.log("Pacing...");
+	let originalText = _TEXT_LAYER.innerHTML;
 	let mainText = _TEXT_LAYER;
 	let allWords = mainText.innerHTML;
 	allWords = allWords.trim();
@@ -343,11 +361,20 @@ function pacePage(wpm) {
 
 	delayInMilliseconds =
 		millisecPerWord * allWordsArrayNoEmpty.length + 500;
+
+	// STOP BUTTON
+	document
+		.querySelector("#stop")
+		.addEventListener("click", () => {
+			clearInterval(read);
+			_TEXT_LAYER.innerHTML = originalText;
+		});
 }
 
 document
 	.querySelector("#start-pacing")
 	.addEventListener("click", () => {
+		goToPage.disabled = true;
 		paceMultiplePages();
 	});
 
@@ -367,6 +394,7 @@ async function paceMultiplePages() {
 		await delay(500);
 		counter++;
 	}
+	goToPage.disabled = false;
 	showPage(_CURRENT_PAGE);
 }
 
