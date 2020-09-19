@@ -243,7 +243,9 @@ document
 var _START_PAGE_INPUT = document.querySelector(
 	"#start-page"
 );
+var _END_PAGE_INPUT = document.querySelector("#end-page");
 _START_PAGE_INPUT.defaultValue = 1;
+_END_PAGE_INPUT.defaultValue = 1;
 var _END_PAGE_INPUT = document.querySelector("#end-page");
 var _END_PAGE_CHECKBOX = document.querySelector(
 	"#end-page-checkbox"
@@ -371,12 +373,31 @@ function pacePage(wpm) {
 		});
 }
 
-document
-	.querySelector("#start-pacing")
-	.addEventListener("click", () => {
+// START PACING BUTTON
+let playButton = document.querySelector("#play");
+let startPacing = document.querySelector("#start-pacing");
+startPacing.addEventListener("click", () => {
+	startPacing.disabled = true;
+	if (_START_PAGE == 1 && _END_PAGE == 1) {
+		pacePage(_WORDS_PER_MINUTE);
+	} else {
 		goToPage.disabled = true;
+		playButton.disabled = true;
 		paceMultiplePages();
-	});
+		playButton.disabled = false;
+	}
+	startPacing.disabled = false;
+});
+
+// PLAY BUTTON
+playButton.addEventListener("click", () => {
+	if (_START_PAGE == 1 && _END_PAGE == 1) {
+		pacePage(_WORDS_PER_MINUTE);
+	}
+	playButton.disabled = true;
+	paceMultiplePages();
+	playButton.disabled = false;
+});
 
 async function paceMultiplePages() {
 	document.querySelector("#step-5").style.color = "#004df9";
