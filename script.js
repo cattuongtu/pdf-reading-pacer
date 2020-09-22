@@ -258,7 +258,7 @@ _SAVE_START_END.addEventListener("click", () => {
 	} else {
 		_START_PAGE =
 			_START_PAGE_INPUT.value > _TOTAL_PAGES ||
-			_START_PAGE < 1
+			_START_PAGE_INPUT.value < 1
 				? 1
 				: _START_PAGE_INPUT.value;
 		_END_PAGE =
