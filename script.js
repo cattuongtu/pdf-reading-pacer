@@ -256,8 +256,15 @@ _SAVE_START_END.addEventListener("click", () => {
 		_START_PAGE = _START_PAGE_INPUT.value;
 		_END_PAGE = _TOTAL_PAGES;
 	} else {
-		_START_PAGE = _START_PAGE_INPUT.value;
-		_END_PAGE = _END_PAGE_INPUT.value;
+		_START_PAGE =
+			_START_PAGE_INPUT.value > _TOTAL_PAGES ||
+			_START_PAGE < 1
+				? 1
+				: _START_PAGE_INPUT.value;
+		_END_PAGE =
+			_END_PAGE_INPUT.value > _TOTAL_PAGES
+				? _TOTAL_PAGES
+				: _END_PAGE_INPUT.value;
 	}
 	while (_CURRENT_PAGE != _START_PAGE) {
 		nextPage();

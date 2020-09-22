@@ -1,0 +1,20 @@
+{
+	"name": "pdf-reading-pacer",
+	"version": "1.0.0",
+	"description": "PDF reading pacer web application.",
+	"main": "script.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/cattuongtu/pdf-reading-pacer.git"
+	},
+	"author": "Cat-Tuong Tu",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/cattuongtu/pdf-reading-pacer/issues"
+	},
+	"homepage": "https://github.com/cattuongtu/pdf-reading-pacer#readme",
+	"dependencies": {}
+}
